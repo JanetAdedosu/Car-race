@@ -1,9 +1,11 @@
 // Get references to the car and game container
 const car = document.querySelector('.car');
 const gameContainer = document.querySelector('.game-container');
+const scoreDisplay = document.getElementById('score'); // Reference to the score display
 
 // Set initial position of the car
 let carPosition = 275; // Centered in a 600px wide container (600/2 - 50/2)
+let score = 0; // Initialize score
 
 // Function to move the car left or right
 function moveCar(event) {
@@ -41,6 +43,8 @@ function createObstacle() {
         if (obstaclePosition > 600) {
             clearInterval(obstacleInterval);
             gameContainer.removeChild(obstacle); // Remove obstacle when it goes out of view
+            score += 1; // Increase score when an obstacle passes
+            scoreDisplay.textContent = 'Score: ' + score; // Update score display
         }
 
         // Collision detection
@@ -50,6 +54,7 @@ function createObstacle() {
             alert('Game Over!'); // Simple game over alert
             clearInterval(obstacleInterval);
             gameContainer.removeChild(obstacle); // Remove obstacle on collision
+            
         }
     }, 100); // Move every 100ms
 }
