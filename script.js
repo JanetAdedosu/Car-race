@@ -17,12 +17,12 @@ document.addEventListener('keydown', (event) => {
     car.style.left = carPosition + 'px';
 });
 
-// Start the game
+// Starting the game
 function startGame() {
     gameInterval = setInterval(() => {
         if (isGameOver) return;
 
-        obstaclePosition += 5; // Move the obstacle down
+        obstaclePosition += 5; // Moving the obstacle down
 
         // Reset obstacle position if it goes off screen
         if (obstaclePosition > 600) {
